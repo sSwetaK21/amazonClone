@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Products.css";
+import ProductCard from "./ProductsCard/ProductCard";
+import Header from "../Header/Header";
 
 export default function Products() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,6 +34,7 @@ export default function Products() {
 
   return (
     <div>
+      <Header />
       <div className="products">
         <div className="productsTitle">
           <h1>Today's Deal</h1>
@@ -41,20 +44,22 @@ export default function Products() {
             </button>
             {menuOpen && (
               <div className="sort-menu">
-                <button onClick={() => handleSort("HTL")}>High - Low</button>
-                <button onClick={() => handleSort("LTH")}>Low - High</button>
+                <button onClick={() => handleSort("HTL")} className="sortBtn">
+                  High - Low
+                </button>
+                <button onClick={() => handleSort("LTH")} className="sortBtn">
+                  Low - High
+                </button>
               </div>
             )}
           </div>
         </div>
+        <hr></hr>
 
-        <div className="row">
+        <div className="products_row">
           {products.map((product) => (
-            <div className="col-12" key={product.id}>
-              <div className="product-card">
-                <p>{product.name}</p>
-                <p>Price: {product.price}</p>
-              </div>
+            <div className="prdctcard">
+              <ProductCard key={product.id} product={product} />
             </div>
           ))}
         </div>

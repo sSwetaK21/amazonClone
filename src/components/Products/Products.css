@@ -1,9 +1,18 @@
-/* .sorting .dropdown-toggle {
-  display: inline-block !important;
-  visibility: visible !important;
+.productsTitle {
+  display: flex;
+  justify-content: space-around;
+}
+.sort-menu {
+  display: flex;
+  width: 150px;
+  flex-direction: column;
 }
 
-.sorting .dropdown-toggle:focus {
-  outline: none !important;
-  box-shadow: none !important;
-} */
+.sortBtn {
+  border: 1px solid black;
+}
+
+.products_row {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -27,7 +27,14 @@ function App() {
               </WithHeader>
             }
           />
-          <Route path="/home" element={<Home username={username} />} />
+          <Route
+            path="/home"
+            element={
+              <WithHeader username={username}>
+                <Home />
+              </WithHeader>
+            }
+          />
           <Route path="/login" element={<Login setUsername={setUsername} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products />} />
