@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Products.css";
 import ProductCard from "./ProductsCard/ProductCard";
 import Header from "../Header/Header";
+import { Link } from "react-router-dom";
 
 export default function Products() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -58,8 +59,10 @@ export default function Products() {
 
         <div className="products_row">
           {products.map((product) => (
-            <div className="prdctcard">
-              <ProductCard key={product.id} product={product} />
+            <div className="prdctcard" key={product.id}>
+              <Link to={`/product/${product.id}`} state={{ product }}>
+                <ProductCard product={product} />
+              </Link>
             </div>
           ))}
         </div>

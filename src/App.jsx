@@ -9,7 +9,7 @@ import Login from "./components/auth/Login/Login";
 import Register from "./components/auth/Register/Register";
 import WithHeader from "./components/WithHeader/WithHeader";
 import Products from "./components/Products/Products";
-
+import ProductDetail from "./components/Products/ProductsDetail.jsx/ProductDetail";
 function App() {
   const [username, setUsername] = useState(
     localStorage.getItem("username") || "User"
@@ -38,6 +38,7 @@ function App() {
           <Route path="/login" element={<Login setUsername={setUsername} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
         </Routes>
       </div>
     </>

@@ -98,11 +98,11 @@ const Header = () => {
       {/* //navbar */}
 
       <nav className="nav_bar">
-        <div className="menu_icon" routerLink="/all">
+        <div className="menu_icon">
           <i className="bx bx-menu"></i>All
         </div>
         <div className="menu_lists">
-          <Link to="#" className="menu_link" routerLink="/products">
+          <Link to="/products" className="menu_link">
             Today's Deals
           </Link>
           <Link to="#" className="menu_link">
