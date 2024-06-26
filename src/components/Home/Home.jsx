@@ -3,12 +3,22 @@ import Header from "../Header/Header";
 import Carousel from "../Carousel/Carousel";
 import MyCarousel from "../Carousel/Carousel";
 import "./Home.css";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
-    <div>
-      {/* <Header /> */}
-      <MyCarousel />
-
+    <div className="Grid_layout">
+      <div className="body_img">
+        <img src="src/assets/images/body_img.jpg" alt="body Img" />
+        <div class="click_link">
+          <p class="click_text">
+            You are on amazon.com. You can also shop on Amazon India for
+            millions of products with fast local delivery.
+            <Link to="/" className="card_link">
+              Click here to go to amazon.in
+            </Link>
+          </p>
+        </div>
+      </div>
       <div className="section_grid">
         <div className="container">
           <div className="cards_row">
@@ -72,7 +82,7 @@ export default function Home() {
               <h3 class="card_head">Get fit at home</h3>
               <div class="card_fitimg">
                 <img
-                  src="/assets/images/Yoha.webp"
+                  src="src/assets/images/Yoha.webp"
                   alt="card"
                   class="card_1img"
                 />
