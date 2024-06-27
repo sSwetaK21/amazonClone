@@ -68,3 +68,12 @@
 .cards_five {
   z-index: 1;
 }
+.card_img {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card_imgtag {
+  width: 146px;
+  height: 135px;
+}

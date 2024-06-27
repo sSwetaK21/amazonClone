@@ -179,7 +179,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div class="cards_nine cards_style">
+            <div class="cards_nine cards_style ">
               <h3 class="card_head">Computers & Accessories</h3>
               <div class="card_img">
                 <img
