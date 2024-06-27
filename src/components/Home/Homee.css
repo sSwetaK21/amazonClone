@@ -1,0 +1,70 @@
+.Grid_layout {
+  background-image: linear-gradient(rgb(47 57 86), rgb(197, 204, 225));
+  padding-bottom: 10px;
+}
+
+.body_img {
+  height: 300px;
+  position: relative;
+  top: 0;
+}
+
+.body_imgtag {
+  width: 100%;
+  height: 540px;
+}
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.click_link {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  bottom: 13%;
+  right: 9%;
+  width: 79%;
+  padding: 15px 0px;
+  background-color: #f5f6f6;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.cards_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cards_style {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+  z-index: 1;
+}
+
+.cards {
+  width: 300px;
+  height: 400px;
+}
+
+.cards_ {
+  height: 130px;
+  z-index: 1;
+}
+.cardParent {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.cards_five {
+  z-index: 1;
+}

@@ -2,13 +2,17 @@ import React from "react";
 import Header from "../Header/Header";
 import Carousel from "../Carousel/Carousel";
 import MyCarousel from "../Carousel/Carousel";
-import "./Home.css";
+import "./Homee.css";
 import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div className="Grid_layout">
       <div className="body_img">
-        <img src="src/assets/images/body_img.jpg" alt="body Img" />
+        <img
+          src="src/assets/images/body_img.jpg"
+          alt="body Img"
+          className="body_imgtag"
+        />
         <div class="click_link">
           <p class="click_text">
             You are on amazon.com. You can also shop on Amazon India for
@@ -95,24 +99,26 @@ export default function Home() {
               </div>
             </div>
 
-            <div class="cards_four cards_style cards">
-              <h2 class="card_head">Sign in for the best experience</h2>
-              <div class="signBox">
-                <button class="card_button" routerLink="/login">
-                  Sign in securely
-                </button>
-                <p>
-                  New Customer? <a routerLink="/login">Start here</a>
-                </p>
+            <div className="cardParent">
+              <div class="cards_four cards_style cards_">
+                <h2 class="card_head">Sign in for the best experience</h2>
+                <div class="signBox">
+                  <button class="card_button" routerLink="/login">
+                    Sign in securely
+                  </button>
+                  <p>
+                    New Customer? <a routerLink="/login">Start here</a>
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div class="cards_five cards">
-              <img
-                src="/assets/images/shipp.jpg"
-                alt="card"
-                class="card_image"
-              />
+              <div class="cards_five cards_">
+                <img
+                  src="src/assets/images/shipp.jpg"
+                  alt="card"
+                  class="card_image"
+                />
+              </div>
             </div>
 
             <div class="cards_six cards_style cards">
@@ -136,7 +142,7 @@ export default function Home() {
               <h3 class="card_head">Health & Personal Care</h3>
               <div class="card_img">
                 <img
-                  src="/assets/images/health.jpg"
+                  src="src/assets/images/health.jpg"
                   alt="card"
                   class="card_1img"
                 />
@@ -153,7 +159,7 @@ export default function Home() {
               <h3 class="card_head">Deal of the Day</h3>
               <div class="card_img">
                 <img
-                  src="/assets/images/41EPNuI8YaL._AC_SY230_.jpg"
+                  src="src/assets/images/41EPNuI8YaL._AC_SY230_.jpg"
                   alt="card"
                   class="card_2img"
                 />
@@ -177,7 +183,7 @@ export default function Home() {
               <h3 class="card_head">Computers & Accessories</h3>
               <div class="card_img">
                 <img
-                  src="/assets/images/comp.jpg"
+                  src="src/assets/images/comp.jpg"
                   alt="card"
                   class="card_1img"
                 />
