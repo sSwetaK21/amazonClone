@@ -9,6 +9,7 @@ import Login from "./components/auth/Login/Login";
 import Register from "./components/auth/Register/Register";
 import WithHeader from "./components/WithHeader/WithHeader";
 import Products from "./components/Products/Products";
+import Footer from "./components/Footer/Footer";
 import ProductDetail from "./components/Products/ProductsDetail.jsx/ProductDetail";
 function App() {
   const [username, setUsername] = useState(
@@ -39,6 +40,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/footer" element={<Footer />} />
         </Routes>
       </div>
     </>

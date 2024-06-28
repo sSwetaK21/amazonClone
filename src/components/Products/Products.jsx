@@ -4,11 +4,14 @@ import "./Products.css";
 import ProductCard from "./ProductsCard/ProductCard";
 import Header from "../Header/Header";
 import { Link } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
+import CustomHeader from "../CustomComponets/CustomHeader";
 
 export default function Products() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [sortOrder, setSortOrder] = useState("HTL");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -32,10 +35,20 @@ export default function Products() {
       )
     );
   };
+  const handleProducts = (productId) => {
+    console.log("productId", productId);
+    // return;
+    navigate("/productDetails", {
+      state: {
+        productId: productId,
+      },
+    });
+  };
 
   return (
     <div>
       <Header />
+      {/* <CustomHeader isVisible={false} ></CustomHeader> */}
       <div className="products">
         <div className="productsTitle">
           <h1>Today's Deal</h1>
@@ -58,11 +71,17 @@ export default function Products() {
         <hr></hr>
 
         <div className="products_row">
-          {products.map((product) => (
-            <div className="prdctcard" key={product.id}>
-              <Link to={`/product/${product.id}`} state={{ product }}>
+          {products.map((product, index) => (
+            <div
+              className="prdctcard"
+              key={index}
+              // onClick={() => handleProducts(product.products_id)}
+            >
+              <Link to={`/product/${product.products_id}`} state={{ product }}>
                 <ProductCard product={product} />
               </Link>
+
+              {/* <ProductCard product={product} /> */}
             </div>
           ))}
         </div>

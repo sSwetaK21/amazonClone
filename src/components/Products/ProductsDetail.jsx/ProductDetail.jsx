@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import "./ProductDetail.css";
+import { useLocation } from "react-router-dom";
 import Header from "../../Header/Header";
+import "./ProductDetail.css";
 
 export default function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
@@ -11,6 +11,8 @@ export default function ProductDetail() {
   if (!product) {
     return <div>Product not found</div>;
   }
+
+  // console.log("=location.state", location.state.productId);
   return (
     <div>
       <Header />
@@ -46,7 +48,7 @@ export default function ProductDetail() {
 
             <div className="qunatity">
               <button className="qbtn">+</button>
-              <input type="text" value={quantity} />
+              <input type="text" />
               <button className="qbtn">-</button>
             </div>
           </div>
