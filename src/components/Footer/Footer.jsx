@@ -64,6 +64,15 @@ export default function Footer() {
               <option value="Telugu">Telugu</option>
             </Form.Select>
           </div>
+
+          <div className="Footer_flag">
+            <img
+              src="src\assets\images\Flag_of_India.svg"
+              alt="flag"
+              className="footer_flagImg"
+            />
+            <p>India</p>
+          </div>
         </div>
       </div>
     </div>

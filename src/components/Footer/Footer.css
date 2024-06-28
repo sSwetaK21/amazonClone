@@ -44,6 +44,9 @@ p {
   height: 23px;
   margin-right: 20px;
 }
+.footer-language {
+  margin-right: 20px;
+}
 select.form-select.form-select-sm {
   padding: 5px;
   background-color: #37475a;
@@ -51,4 +54,18 @@ select.form-select.form-select-sm {
   border: none;
   border-radius: 4px;
   width: 80px;
+}
+
+.footer_flagImg {
+  background-position: -10px -90px;
+  width: 30px;
+  height: 12px;
+  margin-right: 20px;
+}
+.Footer_flag {
+  display: flex;
+  border: 1px solid;
+  align-items: center;
+  padding: 4px;
+  justify-content: center;
 }
