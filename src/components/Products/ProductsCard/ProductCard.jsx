@@ -11,17 +11,18 @@ export default function ProductCard({ product }) {
           <Card.Img src={product.imageUrl} />
         </div>
         <div className="card_content">
-          <Card.Header>
+          <h2 className="card-title">{product.title}</h2>
+          {/* <Card.Header>
             <Card.Title>{product.title}</Card.Title>
-          </Card.Header>
-          <Card.Body>
+          </Card.Header> */}
+          <div className="cardBody">
             <div className="d-flex">
-              <p className="price">₹ {product.price}</p>
-              <p className="discount">- {product.discountPrice} %</p>
+              <p className="card_price">₹ {product.price}</p>
+              <p className="card_ends discount">- {product.discountPrice} %</p>
             </div>
-            <p>{product.description}</p>
+            {/* <p>{product.description}</p> */}
             <button className="addCart">Add to Cart</button>
-          </Card.Body>
+          </div>
         </div>
       </Card>
     </div>

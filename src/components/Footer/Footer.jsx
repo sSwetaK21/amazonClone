@@ -3,10 +3,16 @@ import "./Footer.css";
 import Form from "react-bootstrap/Form";
 
 export default function Footer() {
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <div>
       <div className="footer-main">
-        <div className="back-to-top">
+        <div className="back-to-top" onClick={handleScrollToTop}>
           <p>Back To Top</p>
         </div>
 

@@ -1,12 +1,51 @@
 .matCard.card {
   width: 300px;
-  height: 500px;
+  height: 410px;
   margin: 10px;
+  align-items: center;
 }
-.image {
-  width: 200px;
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
 }
-img.card-img {
-  width: 100%;
-  object-fit: cover;
+.image img {
+  width: 250px;
+  height: 250px;
+  border-radius: 0px;
+}
+.card-title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  /* text-decoration: none; */
+}
+.card_content {
+  margin-top: 16px;
+}
+.card_price {
+  font-size: 18px;
+}
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-content: center;
+}
+button.addCart {
+  background: #ffcf56;
+
+  font-size: 12px;
+  border: 1px solid #e6a400;
+  text-shadow: 0 1px 0 #ffe093;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: #0f1111;
+}
+.discount {
+  font-size: 12px;
+}
+.card_price {
+  font-size: 20px;
 }

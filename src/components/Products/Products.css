@@ -1,18 +1,40 @@
 .productsTitle {
   display: flex;
   justify-content: space-around;
+  padding: 20px 0px 0px 0px;
+  align-items: center;
+}
+button.sort-toggle {
+  border-radius: 4px;
+  border: 1px solid #0000002d;
+  position: relative;
 }
 .sort-menu {
   display: flex;
   width: 150px;
   flex-direction: column;
+  position: absolute;
+  z-index: 1;
 }
 
 .sortBtn {
-  border: 1px solid black;
+  border: 1px solid #0000002d;
 }
-
+.sortBtn:hover {
+  border-color: #ffcf56;
+  background-color: white;
+}
 .products_row {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.title {
+  color: #21313c;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
 }

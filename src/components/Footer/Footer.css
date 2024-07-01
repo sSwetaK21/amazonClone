@@ -1,6 +1,3 @@
-p {
-  margin-bottom: 0px !important;
-}
 .footer-main {
   background-color: #232f3e;
   color: white;
@@ -11,6 +8,13 @@ p {
   padding: 15px 0;
   line-height: 19px;
   font-size: 13px;
+  cursor: pointer;
+}
+.back-to-top:hover {
+  background-color: #475769;
+}
+.back-to-top p {
+  margin-bottom: 0px;
 }
 .footer-container {
   display: flex;
@@ -58,9 +62,8 @@ select.form-select.form-select-sm {
 
 .footer_flagImg {
   background-position: -10px -90px;
-  width: 30px;
-  height: 12px;
-  margin-right: 20px;
+  width: 36px;
+  height: 16px;
 }
 .Footer_flag {
   display: flex;
@@ -68,4 +71,7 @@ select.form-select.form-select-sm {
   align-items: center;
   padding: 4px;
   justify-content: center;
+}
+.Footer_flag p {
+  margin-bottom: 0px;
 }

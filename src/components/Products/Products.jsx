@@ -51,7 +51,7 @@ export default function Products() {
       {/* <CustomHeader isVisible={false} ></CustomHeader> */}
       <div className="products">
         <div className="productsTitle">
-          <h1>Today's Deal</h1>
+          <h1 className="title">Today's Deal</h1>
           <div className="sorting">
             <button className="sort-toggle" onClick={toggleSortMenu}>
               Sort

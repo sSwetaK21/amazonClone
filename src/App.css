@@ -13,3 +13,8 @@
   max-width: 1300px;
   margin: 0 auto;
 }
+
+Link {
+  text-decoration: none;
+  color: #007185;
+}
