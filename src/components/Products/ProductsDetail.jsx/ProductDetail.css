@@ -1,0 +1,35 @@
+.row {
+  width: 100%;
+}
+
+.productImg {
+  width: 500px;
+  height: 500px;
+}
+
+.productImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.price {
+  font-size: 2.8rem;
+  margin-right: 20px;
+}
+.discountPrice {
+  color: #cc0c39;
+  font-size: 30px;
+  /* font-weight: 600; */
+}
+.img1 {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  margin-right: 19px;
+}
+
+.img1 img {
+  width: 52px;
+  height: 46px;
+}
