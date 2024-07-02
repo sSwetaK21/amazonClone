@@ -10,7 +10,9 @@ import Register from "./components/auth/Register/Register";
 import WithHeader from "./components/WithHeader/WithHeader";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer/Footer";
+import Cart from "./components/Cart/Cart";
 import ProductDetail from "./components/Products/ProductsDetail.jsx/ProductDetail";
+import { CartProvider } from "./components/Cart/CartProvider";
 function App() {
   const [username, setUsername] = useState(
     localStorage.getItem("username") || "User"
@@ -19,29 +21,36 @@ function App() {
   return (
     <>
       <div className="App">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <WithHeader username={username}>
-                <Home />
-              </WithHeader>
-            }
-          />
-          <Route
-            path="/home"
-            element={
-              <WithHeader username={username}>
-                <Home />
-              </WithHeader>
-            }
-          />
-          <Route path="/login" element={<Login setUsername={setUsername} />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/footer" element={<Footer />} />
-        </Routes>
+        <CartProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <WithHeader username={username}>
+                  <Home />
+                </WithHeader>
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <WithHeader username={username}>
+                  <Home />
+                </WithHeader>
+              }
+            />
+            <Route
+              path="/login"
+              element={<Login setUsername={setUsername} />}
+            />
+            <Route path="/register" element={<Register />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+
+            <Route path="/footer" element={<Footer />} />
+          </Routes>
+        </CartProvider>
       </div>
     </>
   );

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ReactImageZoom from "react-image-zoom";
 import Header from "../../Header/Header";
 import "./ProductDetail.css";
+import { useCart } from "../../Cart/CartProvider";
 
 export default function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const location = useLocation();
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
 
   const product = location.state?.product;
   if (!product) {
@@ -19,7 +22,11 @@ export default function ProductDetail() {
     zoomWidth: 500,
     img: product.imageUrl,
   };
-
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    navigate("/cart");
+    alert(`${product.title} added to cart`);
+  };
   return (
     <div>
       <Header />
@@ -68,17 +75,30 @@ export default function ProductDetail() {
                   </div>
                 </div>
                 <div className="quantity">
-                  <button className="qbtn">&minus;</button>
+                  <button
+                    className="qbtn"
+                    onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
+                  >
+                    &minus;
+                  </button>
                   <input
                     type="text"
                     value={quantity}
                     className="inputQty"
                     readOnly
                   />
-                  <button className="qbtn"> + </button>
+                  <button
+                    className="qbtn"
+                    onClick={() => setQuantity(quantity + 1)}
+                  >
+                    {" "}
+                    +{" "}
+                  </button>
                 </div>
 
-                <button className="addCart add">Add to Cart</button>
+                <button className="addCart add" onClick={handleAddToCart}>
+                  Add to Cart
+                </button>
                 <hr></hr>
 
                 <table class="table table-borderless mb-0">
