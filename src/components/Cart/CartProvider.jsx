@@ -75,7 +75,7 @@ export function CartProvider({ children }) {
         `https://localhost:7219/api/Carts/removeCartItem/${user.userId}/${productId}`
       );
       setCart((prevCart) =>
-        prevCart.filter((product) => product.id !== productId)
+        prevCart.filter((product) => product.products_id !== productId)
       );
     } catch (error) {
       console.error("Failed to remove item from cart", error);

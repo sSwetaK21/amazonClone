@@ -54,7 +54,7 @@ export default function Cart() {
 
                           <button
                             className="buyBtn"
-                            onClick={() => removeFromCart(product.id)}
+                            onClick={() => removeFromCart(product.products_id)}
                           >
                             Delete
                           </button>

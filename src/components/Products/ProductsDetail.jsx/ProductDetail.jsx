@@ -25,6 +25,8 @@ export default function ProductDetail() {
   const handleAddToCart = () => {
     addToCart(product, quantity);
     navigate("/cart");
+    console.log(product, "Product ID is here");
+
     // alert(`${product.title} added to cart`);
   };
   return (
