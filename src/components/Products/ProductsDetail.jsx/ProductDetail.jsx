@@ -25,7 +25,7 @@ export default function ProductDetail() {
   const handleAddToCart = () => {
     addToCart(product, quantity);
     navigate("/cart");
-    alert(`${product.title} added to cart`);
+    // alert(`${product.title} added to cart`);
   };
   return (
     <div>
@@ -101,7 +101,7 @@ export default function ProductDetail() {
                 </button>
                 <hr></hr>
 
-                <table class="table table-borderless mb-0">
+                <table className="table table-borderless mb-0">
                   <tbody>
                     <tr>
                       <td>Product Code:</td>
@@ -120,7 +120,9 @@ export default function ProductDetail() {
                       <td>
                         <small>
                           01 day shipping.
-                          <span class="text-muted">( Free pickup today)</span>
+                          <span className="text-muted">
+                            ( Free pickup today)
+                          </span>
                         </small>
                       </td>
                     </tr>

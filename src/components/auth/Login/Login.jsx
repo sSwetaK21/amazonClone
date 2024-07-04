@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 import "./Login.css";
+import { useAuth } from "../AuthProvider";
 
 export default function Login({ setUsername }) {
   const [formData, setFormData] = useState({
@@ -13,28 +14,32 @@ export default function Login({ setUsername }) {
   const [err, setErr] = useState(null);
   const [isSubmit, setIsSubmit] = useState(false);
   const navigate = useNavigate();
-
+  const { login } = useAuth();
   useEffect(() => {
     if (isSubmit) {
       const loginUser = async () => {
         try {
           console.log("Submitting form data:", formData);
 
-          const response = await axios.post(
-            "https://localhost:7219/api/Users/login",
-            formData,
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          console.log("Registration successful:", response.data);
-          const username = response.data.userName;
-          localStorage.setItem("username", username);
-          setUsername(response.data.userName);
-
-          navigate("/home");
+          // const response = await axios.post(
+          //   "https://localhost:7219/api/Users/login",
+          //   formData,
+          //   {
+          //     headers: {
+          //       "Content-Type": "application/json",
+          //     },
+          //   }
+          // );
+          // console.log("Registration successful:", response.data);
+          // const username = response.data.userName;
+          // localStorage.setItem("username", username);
+          // setUsername(response.data.userName);
+          await login(formData.username, formData.password);
+          const storedUser = JSON.parse(localStorage.getItem("user"));
+          if (storedUser) {
+            setUsername(storedUser.user_Name);
+            navigate("/home");
+          }
         } catch (err) {
           console.error("Registration failed:", err);
           if (err.response && err.response.data) {
@@ -50,7 +55,7 @@ export default function Login({ setUsername }) {
       };
       loginUser();
     }
-  }, [isSubmit, formData, navigate]);
+  }, [isSubmit, formData, navigate, login]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

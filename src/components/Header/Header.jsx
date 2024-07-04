@@ -3,10 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import Dropdown from "react-bootstrap/Dropdown";
+import { useCart } from "../Cart/CartProvider";
 
 const Header = () => {
   const username = localStorage.getItem("username") || "User";
-
+  const cart = useCart();
+  const cartItem = cart.length;
+  // console.log(cart.length, "cart length");
   return (
     <>
       <header className="header">
@@ -90,7 +93,7 @@ const Header = () => {
               <Link to="/cart" className="cart_icon">
                 <i className="bx bx-cart"></i>
               </Link>
-              <span>0</span>
+              <span>{cartItem}</span>
             </div>
           </div>
         </div>

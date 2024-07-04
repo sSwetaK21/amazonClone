@@ -1,12 +1,26 @@
-.cart {
+/* .cart {
   background-color: #eaeded;
-}
+} */
 .whiteBox {
-  background-color: white;
-  padding: 20px;
+  border: 1px solid #0000002d;
+  border-radius: 4px;
+  padding: 18px;
+}
+.itemList {
+  border: 1px solid #0000002d;
+  border-radius: 4px;
 }
 .subTotal {
   margin-left: 16px;
+}
+.productdescription {
+  margin-top: 18px;
+}
+.Totalprice {
+  margin-top: 15px;
+}
+.des {
+  font-size: 14px;
 }
 .containers {
   padding: 20px;
@@ -19,8 +33,8 @@ h3.title {
 }
 
 .cartproduct img {
-  width: 180px;
-  height: 180px;
+  width: 100%;
+  height: auto;
 }
 h2.productTitle {
   font-size: 18px;
@@ -50,15 +64,12 @@ button.qbtn {
 }
 .card_button {
   background: #ffcf56;
-  width: 200px;
   border: 1px solid #e6a400;
   color: #ffcf56;
   text-shadow: 0 1px 0 #ffe093;
   text-align: center;
   padding: 5px 0px;
-  /* background-image: url(https://m.media-amazon.com/images/S/sash/vfqcwUkuArEiwD2.png); */
   border-radius: 5px;
-  margin: 10px;
   font-weight: 700;
   color: #0f1111;
 }

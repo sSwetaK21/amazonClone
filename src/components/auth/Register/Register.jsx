@@ -4,7 +4,7 @@ import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 import "./Register.css";
 
-export default function Register() {
+export default function Register({ setUsername }) {
   const [formData, setFormData] = useState({
     user_Id: 0,
     user_Name: "",
@@ -20,7 +20,7 @@ export default function Register() {
     if (isSubmit) {
       const registerUser = async () => {
         try {
-          console.log("Submitting form data:", formData); // Log the request payload
+          console.log("Submitting form data:", formData);
           const response = await axios.post(
             "https://localhost:7219/api/Users/register",
             formData,
@@ -31,6 +31,9 @@ export default function Register() {
             }
           );
           console.log("Registration successful:", response.data);
+          //Storing data in local storage here
+          localStorage.setItem("user", JSON.stringify(response.data));
+          setUsername(response.data.user_Name);
           navigate("/login");
         } catch (err) {
           console.error("Registration failed:", err);
