@@ -8,8 +8,8 @@ import { useAuth } from "../auth/AuthProvider";
 
 const Header = () => {
   // const username = localStorage.getItem("username") || "User";
-  const { user, logout } = useAuth;
-  const username = user ? user.user_Name : "User";
+  const { user, logout } = useAuth();
+  const username = user?.userName || "Guest";
   const cart = useCart();
   const cartItem = cart.length;
   const navigate = useNavigate();
@@ -86,9 +86,16 @@ const Header = () => {
 
               <Dropdown.Menu className="dropdown-menu text-small shadow">
                 <Dropdown.Item className="signBox">
-                  <button className="card_button" onClick={handleLogout}>
-                    Sign Out
-                  </button>
+                  {username ? (
+                    <button className="card_button" onClick={handleLogout}>
+                      Sign Out
+                    </button>
+                  ) : (
+                    <button className="card_button" onClick={handleLogout}>
+                      Sign In
+                    </button>
+                  )}
+
                   <p>
                     New Customer? <Link to="/register">Start here</Link>
                   </p>

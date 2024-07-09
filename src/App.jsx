@@ -14,6 +14,8 @@ import Cart from "./components/Cart/Cart";
 import ProductDetail from "./components/Products/ProductsDetail.jsx/ProductDetail";
 import { CartProvider } from "./components/Cart/CartProvider";
 import { AuthProvider } from "./components/auth/AuthProvider";
+import CheckOut from "./components/CheckOut/CheckOut";
+import Thankyou from "./components/Thankyou/Thankyou";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -45,6 +47,8 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<CheckOut />} />
+              <Route path="/thankyou" element={<Thankyou />} />
 
               <Route path="/footer" element={<Footer />} />
             </Routes>

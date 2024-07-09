@@ -1,0 +1,26 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  background-color: #ddd !important;
+  align-items: center;
+  padding: 20px;
+}
+.BrandImg {
+  width: 130px;
+  height: 130px;
+}
+
+.container .card .img-box {
+  width: 80px;
+  height: 60px;
+}
+
+.container .card img {
+  width: 100%;
+  object-fit: fill;
+}
+
+.container .card .number {
+  font-size: 24px;
+}

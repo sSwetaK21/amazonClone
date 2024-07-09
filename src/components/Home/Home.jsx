@@ -7,12 +7,12 @@ import MyCarousel from "../Carousel/Carousel";
 export default function Home() {
   const homeImg = [
     { src: "src/assets/images/p1.jpg", alt: "Home1" },
-    { src: "src/assets/images/p2.jpg", alt: "Home1" },
-    { src: "src/assets/images/p3.jpg", alt: "Home1" },
-    { src: "src/assets/images/p4.jpg", alt: "Home1" },
-    { src: "src/assets/images/p5.jpg", alt: "Home1" },
-    { src: "src/assets/images/p7.jpg", alt: "Home1" },
-    { src: "src/assets/images/p3.jpg", alt: "Home1" },
+    { src: "src/assets/images/p2.jpg", alt: "Home2" },
+    { src: "src/assets/images/p3.jpg", alt: "Home3" },
+    { src: "src/assets/images/p1.jpg", alt: "Home4" },
+    { src: "src/assets/images/p5.jpg", alt: "Home5" },
+    { src: "src/assets/images/p7.jpg", alt: "Home6" },
+    { src: "src/assets/images/shop3.jpg", alt: "Home7" },
   ];
   return (
     <>
