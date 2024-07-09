@@ -12,9 +12,22 @@ export function CartProvider({ children }) {
   useEffect(() => {
     // fetchUserDetails();
     if (user) {
+      console.log("User is authenticated, fetching cart items from server...");
       fetchItems();
+    } else {
+      console.log(
+        "User is not authenticated, loading cart items from local storage..."
+      );
+      const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
+      if (storedCartItems) {
+        setCart(storedCartItems);
+      }
     }
   }, [user]);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+  }, []);
 
   // const fetchUserDetails = async () => {
   //   try {

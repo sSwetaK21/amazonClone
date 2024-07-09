@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 import "./Register.css";
+import { useAuth } from "../AuthProvider";
 
-export default function Register({ setUsername }) {
+export default function Register() {
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
-    user_Id: 0,
     user_Name: "",
     email: "",
     password: "",
@@ -32,8 +33,9 @@ export default function Register({ setUsername }) {
           );
           console.log("Registration successful:", response.data);
           //Storing data in local storage here
-          localStorage.setItem("user", JSON.stringify(response.data));
-          setUsername(response.data.user_Name);
+          // localStorage.setItem("user", JSON.stringify(response.data));
+          // setUser(response.data.user_Name);
+          await login(formData.user_Name, formData.password);
           navigate("/login");
         } catch (err) {
           console.error("Registration failed:", err);

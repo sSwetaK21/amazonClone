@@ -16,9 +16,7 @@ import { CartProvider } from "./components/Cart/CartProvider";
 import { AuthProvider } from "./components/auth/AuthProvider";
 
 function App() {
-  const [username, setUsername] = useState(
-    localStorage.getItem("username") || "User"
-  );
+  const [user, setUser] = useState(null);
 
   return (
     <>
@@ -29,7 +27,7 @@ function App() {
               <Route
                 path="/"
                 element={
-                  <WithHeader username={username}>
+                  <WithHeader user={user}>
                     <Home />
                   </WithHeader>
                 }
@@ -37,15 +35,12 @@ function App() {
               <Route
                 path="/home"
                 element={
-                  <WithHeader username={username}>
+                  <WithHeader user={user}>
                     <Home />
                   </WithHeader>
                 }
               />
-              <Route
-                path="/login"
-                element={<Login setUsername={setUsername} />}
-              />
+              <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/products" element={<Products />} />
               <Route path="/product/:id" element={<ProductDetail />} />

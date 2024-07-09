@@ -19,9 +19,9 @@ export function AuthProvider({ children }) {
         "https://localhost:7219/api/Users/login",
         { username, password }
       );
-      console.log(response.data);
       const userData = response.data;
       setUser(userData);
+      console.log(userData, "login data");
       localStorage.setItem("user", JSON.stringify(userData));
     } catch (error) {
       console.error("Login failed", error);

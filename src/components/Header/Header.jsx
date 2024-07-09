@@ -1,14 +1,23 @@
 // src/Header.jsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useCart } from "../Cart/CartProvider";
+import { useAuth } from "../auth/AuthProvider";
 
 const Header = () => {
-  const username = localStorage.getItem("username") || "User";
+  // const username = localStorage.getItem("username") || "User";
+  const { user, logout } = useAuth;
+  const username = user ? user.user_Name : "User";
   const cart = useCart();
   const cartItem = cart.length;
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
   // console.log(cart.length, "cart length");
   return (
     <>
@@ -69,20 +78,17 @@ const Header = () => {
               </select>
             </div>
             <Dropdown className="dropdown">
-              <Link
-                to="/login"
-                className="d-flex align-items-center text-decoration-none "
-                style={{ color: "white" }}
-              >
-                <Dropdown.Toggle className="hello_text" id="dropdown-basic">
-                  <span className="hello-txt"> Hello, {username}</span>
-                  <br />
-                  Accounts & Lists
-                </Dropdown.Toggle>
-              </Link>
+              <Dropdown.Toggle className="hello_text" id="dropdown-basic">
+                <span className="hello-txt"> Hello, {username}</span>
+                <br />
+                Accounts & Lists
+              </Dropdown.Toggle>
+
               <Dropdown.Menu className="dropdown-menu text-small shadow">
                 <Dropdown.Item className="signBox">
-                  <button className="card_button">Sign Out</button>
+                  <button className="card_button" onClick={handleLogout}>
+                    Sign Out
+                  </button>
                   <p>
                     New Customer? <Link to="/register">Start here</Link>
                   </p>

@@ -5,7 +5,9 @@ import axios from "axios";
 import "./Login.css";
 import { useAuth } from "../AuthProvider";
 
-export default function Login({ setUsername }) {
+export default function Login() {
+  const { login } = useAuth();
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -14,7 +16,6 @@ export default function Login({ setUsername }) {
   const [err, setErr] = useState(null);
   const [isSubmit, setIsSubmit] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
   useEffect(() => {
     if (isSubmit) {
       const loginUser = async () => {
@@ -35,11 +36,12 @@ export default function Login({ setUsername }) {
           // localStorage.setItem("username", username);
           // setUsername(response.data.userName);
           await login(formData.username, formData.password);
-          const storedUser = JSON.parse(localStorage.getItem("user"));
-          if (storedUser) {
-            setUsername(storedUser.user_Name);
-            navigate("/home");
-          }
+          // const storedUser = JSON.parse(localStorage.getItem("user"));
+          // if (storedUser) {
+          //   setUser(storedUser.user_Name);
+          //   navigate("/home");
+          // }
+          navigate("/home");
         } catch (err) {
           console.error("Registration failed:", err);
           if (err.response && err.response.data) {
