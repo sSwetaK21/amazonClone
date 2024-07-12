@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ReactImageZoom from "react-image-zoom";
-import Header from "../../Header/Header";
+import Header from "../Header/Header";
 import "./ProductDetail.css";
-import { useCart } from "../../Cart/CartProvider";
+import { useCart } from "../Cart/CartProvider";
 
 export default function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
@@ -31,7 +31,7 @@ export default function ProductDetail() {
   };
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <div className="mt-5">
         <div className="container">
           <div className="row">

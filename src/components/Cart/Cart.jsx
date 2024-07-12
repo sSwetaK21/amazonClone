@@ -1,10 +1,11 @@
 import React from "react";
 import { useCart } from "./CartProvider";
 import "./Cart.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 export default function Cart() {
   const { cart, removeFromCart } = useCart();
+  const navigate = useNavigate();
   const calculateQuantity = () => {
     return cart.reduce((total, product) => total + product.quantity, 0);
   };
@@ -14,7 +15,7 @@ export default function Cart() {
   };
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="cartSection">
         <div className="containers">
           <div className="cartTitle">
@@ -111,7 +112,7 @@ export default function Cart() {
               </div>
               <button
                 className="card_button"
-                onClick={() => alert("Proceed to Buy")}
+                onClick={() => navigate("/checkout")}
               >
                 Proceed to Buy
               </button>

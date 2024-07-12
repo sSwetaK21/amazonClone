@@ -41,11 +41,13 @@ export default function CheckOut() {
     <div>
       <div className="head">
         <div className="brand">
-          <img
-            src="src\assets\images\amazon-black.png"
-            alt="brand"
-            className="BrandImg"
-          />
+          <Link to="/home">
+            <img
+              src="src\assets\images\amazon-black.png"
+              alt="brand"
+              className="BrandImg"
+            />
+          </Link>
         </div>
         <div className="title">
           <h3>CheckOut</h3>

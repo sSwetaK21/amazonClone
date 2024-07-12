@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect, createContext } from "react";
 import axios from "axios";
 import { useAuth } from "../auth/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CartContext = createContext();
 
@@ -12,12 +14,12 @@ export function CartProvider({ children }) {
   useEffect(() => {
     // fetchUserDetails();
     if (user) {
-      console.log("User is authenticated, fetching cart items from server...");
+      // console.log("User is authenticated, fetching cart items from server...");
       fetchItems();
     } else {
-      console.log(
-        "User is not authenticated, loading cart items from local storage..."
-      );
+      // console.log(
+      //   "User is not authenticated, loading cart items from local storage..."
+      // );
       const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
       if (storedCartItems) {
         setCart(storedCartItems);
@@ -45,14 +47,14 @@ export function CartProvider({ children }) {
   // };
   const fetchItems = async (user) => {
     if (!user) {
-      console.log("User is not authenticated");
+      // console.log("User is not authenticated");
       return;
     }
     try {
       const response = await axios.get(
         `https://localhost:7219/api/Carts/cart/${user.userId}`
       );
-      console.log("getcart=========>", response.data);
+      // console.log("getcart=========>", response.data);
       setCart(response.data);
     } catch (error) {
       console.error("Failed to fetch cart items", error);
@@ -70,15 +72,21 @@ export function CartProvider({ children }) {
   //   setCart([...cart, { ...product, quantity }]);
   // };
   const addToCart = async (product, quantity) => {
+    if (!user) {
+      toast.warning("You don't have access. Please Login.");
+      return;
+    }
     try {
       await axios.post(
         `https://localhost:7219/api/Carts/addToCart/${user.userId}/${product.products_id}/${quantity}`
       );
 
       setCart((prevCart) => [...prevCart, { ...product, quantity }]);
-      console.log("carts", cart);
+      toast.success("Product added to cart!");
+      // console.log("carts", cart);
     } catch (error) {
       console.error("Failed to add to Cart", error);
+      toast.error("Failed to add product to cart.");
     }
   };
 
@@ -90,14 +98,17 @@ export function CartProvider({ children }) {
       setCart((prevCart) =>
         prevCart.filter((product) => product.products_id !== productId)
       );
+      toast.success("Product removed from cart!");
     } catch (error) {
       console.error("Failed to remove item from cart", error);
+      toast.error("Failed to add product to cart.");
     }
   };
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
+      <ToastContainer />
     </CartContext.Provider>
   );
 }

@@ -4,7 +4,8 @@ import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 import "./Login.css";
 import { useAuth } from "../AuthProvider";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Login() {
   const { login } = useAuth();
 
@@ -36,6 +37,7 @@ export default function Login() {
           // localStorage.setItem("username", username);
           // setUsername(response.data.userName);
           await login(formData.username, formData.password);
+          toast.success("Login Succesfull!");
           // const storedUser = JSON.parse(localStorage.getItem("user"));
           // if (storedUser) {
           //   setUser(storedUser.user_Name);
@@ -44,9 +46,13 @@ export default function Login() {
           navigate("/home");
         } catch (err) {
           console.error("Registration failed:", err);
+          // toast.error("Login Failed", err);
           if (err.response && err.response.data) {
             console.log("Error response data:", err.response.data);
             setErr(err.response.data);
+            toast.error(
+              "Login Failed,Please try again." || err.response.data.message
+            );
           } else {
             console.log("Error without response data:", err);
             setErr("Registration failed. Please try again.");
@@ -75,6 +81,7 @@ export default function Login() {
   };
   return (
     <>
+      <ToastContainer />
       <div className="auth-portal">
         <div className="brand">
           <Link to="/home">

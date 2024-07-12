@@ -47,7 +47,7 @@ export default function Products() {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       {/* <CustomHeader isVisible={false} ></CustomHeader> */}
       <div className="products">
         <div className="productsTitle">

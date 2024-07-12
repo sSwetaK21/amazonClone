@@ -11,7 +11,7 @@ import WithHeader from "./components/WithHeader/WithHeader";
 import Products from "./components/Products/Products";
 import Footer from "./components/Footer/Footer";
 import Cart from "./components/Cart/Cart";
-import ProductDetail from "./components/Products/ProductsDetail.jsx/ProductDetail";
+import ProductDetail from "./components/ProductsDetail.jsx/ProductDetail";
 import { CartProvider } from "./components/Cart/CartProvider";
 import { AuthProvider } from "./components/auth/AuthProvider";
 import CheckOut from "./components/CheckOut/CheckOut";
@@ -25,21 +25,23 @@ function App() {
       <div className="App">
         <AuthProvider>
           <CartProvider>
+            <Header />
             <Routes>
               <Route
                 path="/"
                 element={
-                  <WithHeader user={user}>
-                    <Home />
-                  </WithHeader>
+                  // <WithHeader user={user}>
+                  //   <Home />
+                  // </WithHeader>
+                  <Home />
                 }
               />
               <Route
                 path="/home"
                 element={
-                  <WithHeader user={user}>
-                    <Home />
-                  </WithHeader>
+                  // <WithHeader user={user}>
+                  // </WithHeader>
+                  <Home />
                 }
               />
               <Route path="/login" element={<Login />} />
