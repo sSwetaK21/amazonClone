@@ -16,6 +16,7 @@ import { CartProvider } from "./components/Cart/CartProvider";
 import { AuthProvider } from "./components/auth/AuthProvider";
 import CheckOut from "./components/CheckOut/CheckOut";
 import Thankyou from "./components/Thankyou/Thankyou";
+import Search from "./components/Search/Search";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -51,7 +52,7 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<CheckOut />} />
               <Route path="/thankyou" element={<Thankyou />} />
-
+              <Route path="/search/:query" element={<Search />} />
               <Route path="/footer" element={<Footer />} />
             </Routes>
           </CartProvider>

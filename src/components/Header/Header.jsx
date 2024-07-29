@@ -1,10 +1,11 @@
 // src/Header.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useCart } from "../Cart/CartProvider";
 import { useAuth } from "../auth/AuthProvider";
+import axios from "axios";
 
 const Header = () => {
   // const username = localStorage.getItem("username") || "User";
@@ -12,13 +13,38 @@ const Header = () => {
   const username = user?.userName || "Guest";
   const cart = useCart();
   const cartItem = cart.length;
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
   const navigate = useNavigate();
 
+  const searchProduct = (e) => {
+    const query = e.target.value;
+    setSearchInput(query);
+    if (query.length > 0) {
+      axios
+        .get(
+          `https://localhost:7219/api/Products/getProductsbyCategory/${query}`
+        )
+        .then((response) => {
+          setSearchResult(response.data.slice(0, 5));
+        })
+        .catch((err) => {
+          console.log("Error fetching search suggestions:", err);
+        });
+    } else {
+      setSearchResult([]);
+    }
+  };
+  const hideSearch = () => {
+    setSearchResult([]);
+  };
+  const submitSearch = (query) => {
+    navigate(`/search/${query}`);
+  };
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
-  // console.log(cart.length, "cart length");
   return (
     <>
       <header className="header">
@@ -54,13 +80,43 @@ const Header = () => {
               </select>
             </div>
             <div className="search-container d-flex">
-              <input type="search" placeholder="Search" name="search" />
+              <input
+                type="search"
+                placeholder="Search"
+                name="search"
+                value={searchInput}
+                onChange={searchProduct}
+                className="search_input"
+              />
             </div>
             <div className="search">
-              <button className="btnsearch">
+              <button
+                className="btnsearch"
+                onClick={() => {
+                  submitSearch(searchInput);
+                }}
+              >
                 <i className="bx bx-search-alt-2"></i>
               </button>
             </div>
+            {searchResult.length > 0 && (
+              <>
+                <ul className="autocomplete">
+                  {searchResult.map((product, index) => (
+                    <li className="search-item">
+                      <Link
+                        key={index}
+                        to={`/product/${product.products_id}`}
+                        state={{ product }}
+                        onClick={hideSearch}
+                      >
+                        {product.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
           <div className="nav-right">
             <div className="nav-flag">
@@ -86,7 +142,7 @@ const Header = () => {
 
               <Dropdown.Menu className="dropdown-menu text-small shadow">
                 <Dropdown.Item className="signBox">
-                  {username ? (
+                  {user && user.userName !== "Guest" ? (
                     <button className="card_button" onClick={handleLogout}>
                       Sign Out
                     </button>
