@@ -26,6 +26,14 @@ export default function ProductDetail() {
     addToCart(product, quantity);
     navigate("/cart");
     console.log(product, "Product ID is here");
+    // addToCart(product, quantity)
+    //   .then(() => {
+    //     console.log("Added to cart successfully"); // Success message
+    //     navigate("/cart");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error adding to cart:", error); // Error handling
+    //   });
 
     // alert(`${product.title} added to cart`);
   };

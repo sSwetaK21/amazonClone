@@ -11,12 +11,12 @@ const Header = () => {
   // const username = localStorage.getItem("username") || "User";
   const { user, logout } = useAuth();
   const username = user?.userName || "Guest";
-  const cart = useCart();
+  const { cart } = useCart() || [];
   const cartItem = cart.length;
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const navigate = useNavigate();
-
+  console.log(cart, "cartItem");
   const searchProduct = (e) => {
     const query = e.target.value;
     setSearchInput(query);

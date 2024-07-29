@@ -28,49 +28,25 @@ export function CartProvider({ children }) {
   }, [user]);
 
   useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cart));
-  }, []);
+    if (user) {
+      localStorage.setItem("cartItems", JSON.stringify(cart));
+    }
+  }, [cart, user]);
 
-  // const fetchUserDetails = async () => {
-  //   try {
-  //     await axios
-  //       .get("https://localhost:7219/api/Users/getUsers")
-  //       .then((response) => {
-  //         console.log("all response===", response.data);
-  //         // console.log("responseId", response.data[0].user_Id);
-  //         let userId = response.data[0].user_Id;
-  //         fetchItems(userId);
-  //       });
-  //   } catch (error) {
-  //     console.error("Failed to fetch user details", error);
-  //   }
-  // };
   const fetchItems = async (user) => {
     if (!user) {
-      // console.log("User is not authenticated");
       return;
     }
     try {
       const response = await axios.get(
         `https://localhost:7219/api/Carts/cart/${user.userId}`
       );
-      // console.log("getcart=========>", response.data);
       setCart(response.data);
     } catch (error) {
       console.error("Failed to fetch cart items", error);
     }
   };
 
-  // useEffect(() => {
-
-  //   if (user_Id) {
-  //     fetchItems();
-  //   }
-  // }, [user_Id]);
-
-  // const addToCart = (product, quantity) => {
-  //   setCart([...cart, { ...product, quantity }]);
-  // };
   const addToCart = async (product, quantity) => {
     if (!user) {
       toast.warning("You don't have access. Please Login.");
@@ -83,7 +59,6 @@ export function CartProvider({ children }) {
 
       setCart((prevCart) => [...prevCart, { ...product, quantity }]);
       toast.success("Product added to cart!");
-      // console.log("carts", cart);
     } catch (error) {
       console.error("Failed to add to Cart", error);
       toast.error("Failed to add product to cart.");
