@@ -79,9 +79,14 @@ export function CartProvider({ children }) {
       toast.error("Failed to add product to cart.");
     }
   };
-
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cartItems");
+  };
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, clearCart }}
+    >
       {children}
       <ToastContainer />
     </CartContext.Provider>

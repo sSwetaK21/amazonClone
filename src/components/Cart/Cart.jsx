@@ -3,6 +3,7 @@ import { useCart } from "./CartProvider";
 import "./Cart.css";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
+import { toast } from "react-toastify";
 export default function Cart() {
   const { cart, removeFromCart } = useCart();
   const navigate = useNavigate();
@@ -12,6 +13,13 @@ export default function Cart() {
 
   const getTotalPrice = (price, quantity) => {
     return price * quantity;
+  };
+  const handleProceedToBuy = () => {
+    if (cart.length === 0) {
+      toast.warning("Your cart is empty. Add items to proceed.");
+      return;
+    }
+    navigate("/checkout");
   };
   return (
     <>
@@ -110,10 +118,7 @@ export default function Cart() {
                   </b>
                 </p>
               </div>
-              <button
-                className="card_button"
-                onClick={() => navigate("/checkout")}
-              >
+              <button className="card_button" onClick={handleProceedToBuy}>
                 Proceed to Buy
               </button>
               <div className="des">
