@@ -29,9 +29,16 @@ button.sort-toggle {
 .products_row {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  /* align-items: center;
+  justify-content: center;
+  align-content: center; */
+}
+.prodRow {
+  display: flex;
   justify-content: center;
   align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .title {
   color: #21313c;

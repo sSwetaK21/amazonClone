@@ -6,10 +6,12 @@ import Header from "../Header/Header";
 import { Link } from "react-router-dom";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import CustomHeader from "../CustomComponets/CustomHeader";
+import { filters } from "./filters";
 
 export default function Products() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [products, setProducts] = useState([]);
+  const [selectedFilters, setSelectedFilters] = useState([]);
   const [sortOrder, setSortOrder] = useState("HTL");
   const navigate = useNavigate();
 
@@ -35,6 +37,20 @@ export default function Products() {
       )
     );
   };
+  const handleFilterChange = (event) => {
+    const { value, checked } = event.target;
+    setSelectedFilters((prevFilters) => {
+      const newFilters = checked
+        ? [...prevFilters, value]
+        : prevFilters.filter((filter) => filter !== value);
+      return newFilters;
+    });
+  };
+
+  const filteredProducts = products.filter(
+    (product) =>
+      selectedFilters.length === 0 || selectedFilters.includes(product.category)
+  );
   const handleProducts = (productId) => {
     console.log("productId", productId);
     // return;
@@ -69,21 +85,50 @@ export default function Products() {
           </div>
         </div>
         <hr></hr>
+        {/* //filter */}
 
         <div className="products_row">
-          {products.map((product, index) => (
-            <div
-              className="prdctcard"
-              key={index}
-              // onClick={() => handleProducts(product.products_id)}
-            >
-              <Link to={`/product/${product.products_id}`} state={{ product }}>
-                <ProductCard product={product} />
-              </Link>
-
-              {/* <ProductCard product={product} /> */}
+          <div className="col-3">
+            <div className="filterSection">
+              <h2>Filter</h2>
+              <form>
+                {filters.map((filter) => (
+                  <div className="filters" key={filter.id}>
+                    <h3 className="f-title">{filter.name}</h3>
+                    <div className="f-section">
+                      {filter.options.map((opt) => (
+                        <div className="flexBoxx" key={opt.value}>
+                          <input
+                            type="checkbox"
+                            id={`filter-${opt.value}`}
+                            value={opt.value}
+                            onChange={handleFilterChange}
+                          />
+                          <label htmlFor={`filter-${opt.value}`}>
+                            {opt.label}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </form>
             </div>
-          ))}
+          </div>
+          <div className="col-8">
+            <div className="prodRow">
+              {filteredProducts.map((product, index) => (
+                <div className="prdctcard" key={index}>
+                  <Link
+                    to={`/product/${product.products_id}`}
+                    state={{ product }}
+                  >
+                    <ProductCard product={product} />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
